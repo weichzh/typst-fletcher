@@ -17,6 +17,12 @@
 	assert(false, message: message)
 }
 
+// Fallback doc helpers so external doc parsers can evaluate `#param[..][..]`
+// references from docstrings even when the manual-specific helpers are absent.
+#let param(func, arg, full: false) = {
+	let fn = if type(func) == label { func.text } else 
+
+
 // Replace `auto` with a value
 #let map-auto(value, fallback) = if value == auto { fallback } else { value }
 
