@@ -12,7 +12,7 @@
 ///   - `centers`
 ///   - `spacing`
 ///   - `flip`
-///   The `grid` is passed to #the-param[diagram][render].
+///   The `grid` is passed to the `render` option of `diagram()`.
 /// - uv (array): Elastic coordinate, `(float, float)`.
 #let uv-to-xy(grid, uv) = {
 	let (i, j) = vector.sub(vector-2d(uv), grid.origin)
@@ -50,7 +50,7 @@
 /// (they're elastic). Uses a balanced finite differences approximation.
 ///
 /// - grid (dictionary): Representation of the grid layout.
-///   The `grid` is passed to #the-param[diagram][render].
+///   The `grid` is passed to the `render` option of `diagram()`.
 /// - uv (array): The point `(float, float)` in the $u v$-manifold where the
 ///   shift tangent vector is rooted.
 /// - duv (array): The shift tangent vector `(float, float)` in $u v$ coordinates.

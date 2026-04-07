@@ -5,8 +5,8 @@
 
 /// Draw a labelled node in a diagram which can connect to edges.
 ///
-/// - ..args (any): The first positional argument is #param[node][pos] and the
-///   second, if given, is #param[node][label].
+/// - ..args (any): The first positional argument is `pos` and the
+///   second, if given, is `label`.
 ///
 /// - pos (coordinate): Position of the node, or its center coordinate. This may
 ///   be an elastic (row/column) coordinate like `(2, 1)`, or a CeTZ-style
@@ -59,7 +59,7 @@
 ///   )
 ///   ```
 ///
-///   Defaults to #the-param[diagram][node-inset].
+///   Defaults to the `node-inset` option of `diagram()`.
 ///
 /// - outset (length): Margin between the node's bounds to the anchor
 ///   points for connecting edges.
@@ -79,23 +79,23 @@
 ///   )
 ///   ```
 ///
-///   Defaults to #the-param[diagram][node-outset].
+///   Defaults to the `node-outset` option of `diagram()`.
 ///
 /// - width (length, auto): Width of the node. If `auto`, the node's width is
-///   the width of the node #param[node][label], plus twice the
-///   #param[node][inset].
+///   the width of the node `label`, plus twice the
+///   `inset`.
 ///
-///   If the width is not `auto`, you can use `align` to control the placement of the node's #param[node][label].
+///   If the width is not `auto`, you can use `align` to control the placement of the node's `label`.
 ///
-/// - height (length, auto): Height of the node. If `auto`, the node's height is the height of the node #param[node][label], plus twice the #param[node][inset].
+/// - height (length, auto): Height of the node. If `auto`, the node's height is the height of the node `label`, plus twice the `inset`.
 ///
-///   If the height is not `auto`, you can use `align` to control the placement of the node's #param[node][label].
+///   If the height is not `auto`, you can use `align` to control the placement of the node's `label`.
 ///
 /// - enclose (array): Positions or names of other nodes to enclose by enlarging
 ///   this node.
 ///
 ///   If given, causes the node to resize so that its bounding rectangle
-///   surrounds the given nodes. The center #param[node][pos] does not affect
+///   surrounds the given nodes. The center `pos` does not affect
 ///   the node's position if `enclose` is given, but still affects connecting
 ///   edges.
 ///
@@ -136,16 +136,16 @@
 ///   See the ```plain src/shapes.typ``` source file for example shape
 ///   implementations.
 ///
-///   Defaults to #the-param[diagram][node-shape].
+///   Defaults to the `node-shape` option of `diagram()`.
 ///
 /// - stroke (stroke): Stroke style for the node outline.
 ///
-///   Defaults to #the-param[diagram][node-stroke].
+///   Defaults to the `node-stroke` option of `diagram()`.
 ///
 /// - fill (paint): Fill style of the node. The fill is drawn within the node
-///   outline as defined by the first #param(full: false)[node][extrude] value.
+///   outline as defined by the first `extrude` value.
 ///
-///   Defaults to #the-param[diagram][node-fill].
+///   Defaults to the `node-fill` option of `diagram()`.
 ///
 /// - defocus (number): Strength of the "defocus" adjustment for connectors
 ///   incident with this node.
@@ -169,7 +169,7 @@
 ///   	})
 ///   )
 ///
-///   Defaults to #the-param[diagram][node-defocus].
+///   Defaults to the `node-defocus` option of `diagram()`.
 ///
 /// - extrude (array): Draw strokes around the node at the given offsets to
 ///   obtain a multi-stroke effect. Offsets may be numbers (specifying multiples
@@ -187,12 +187,12 @@
 ///   	node((3,0), `(0, -2.5, 2mm)`, extrude: (0, -2.5, 2mm)),
 ///   )
 ///
-///   See also #the-param[edge][extrude].
+///   See also the `extrude` option of `edge()`.
 ///
 /// - corner-radius (length): Radius of rounded corners, if supported by the
-///   node #param[node][shape].
+///   node `shape`.
 ///
-///   Defaults to #the-param[diagram][node-corner-radius].
+///   Defaults to the `node-corner-radius` option of `diagram()`.
 ///
 /// - layer (number): Layer on which to draw the node.
 ///
@@ -200,15 +200,15 @@
 ///   `layer`. Objects on the same layer are drawn in the order they are passed
 ///   to `diagram()`.
 ///
-///   Defaults to layer `0` unless the node #param[node][enclose]s
+///   Defaults to layer `0` unless the node `enclose`s
 ///   points, in which case `layer` defaults to `-1`.
 ///
 /// - snap (number, false): The snapping priority for edges connecting to this
 ///   node. A higher priority means edges will automatically snap to this node
 ///   over other overlapping nodes. If `false`, edges only snap to this node if
-///   manually set with #the-param[edge][snap-to].
+///   manually set with the `snap-to` option of `edge()`.
 ///
-///   Setting a lower value is useful if the node #param[node][enclose]s other
+///   Setting a lower value is useful if the node `enclose`s other
 ///   nodes that you want to snap to first.
 ///
 /// - post (function): Callback function to intercept `cetz` objects before they

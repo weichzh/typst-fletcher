@@ -89,8 +89,8 @@
 /// Draw an edge label at point along a curve.
 ///
 /// Label is drawn near the point `curve(edge.label-pos)`, respecting the label
-/// options of `edge()` such as #param[edge][label-side] and
-/// #param[edge][label-angle].
+/// options of `edge()` such as `label-side` and
+/// `label-angle`.
 ///
 /// - edge (dictionary): Edge object. Must include:
 ///   - `label-pos`

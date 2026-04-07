@@ -20,15 +20,7 @@
 // Fallback doc helpers so external doc parsers can evaluate `#param[..][..]`
 // references from docstrings even when the manual-specific helpers are absent.
 #let param(func, arg, full: false) = {
-	let fn = if type(func) == label { func.text } else { str(func) }
-	let arg = if type(arg) == label { arg.text } else { str(arg) }
-	if full {
-		[the #raw(arg) option of #raw(fn + "()")]
-	} else {
-		raw(arg)
-	}
-}
-#let the-param = param.with(full: true)
+	let fn = if type(func) == label { func.text } else 
 
 
 // Replace `auto` with a value
