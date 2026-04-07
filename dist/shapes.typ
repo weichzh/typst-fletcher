@@ -5,7 +5,7 @@
 /// The standard rectangle node shape.
 ///
 /// A string `"rect"` or the element function `rect` given to
-/// #the-param[node][shape] are interpreted as this shape.
+/// the `shape` option of `node()` are interpreted as this shape.
 ///
 /// #diagram(
 /// 	node-stroke: green,
@@ -25,7 +25,7 @@
 /// The standard circle node shape.
 ///
 /// A string `"circle"` or the element function `circle` given to
-/// #the-param[node][shape] are interpreted as this shape.
+/// the `shape` option of `node()` are interpreted as this shape.
 ///
 /// #diagram(
 /// 	node-stroke: red,
@@ -221,7 +221,7 @@
 
 /// An isosceles triangle node shape.
 ///
-/// One of #param[triangle][angle] or #param[triangle][aspect] may be given, but
+/// One of `angle` or `aspect` may be given, but
 /// not both. The triangle's base coincides with the label's base and widens to
 /// enclose the label; see https://www.desmos.com/calculator/i4i9svunj4.
 ///
@@ -569,7 +569,7 @@
 ///
 /// #diagram(node((0,0), [Like this!], shape: fletcher.shapes.brace))
 /// 
-/// This is especially useful when used with #param[node][enclose] nodes.
+/// This is especially useful when used with `enclose` nodes.
 /// 
 /// ```example
 /// #import fletcher.shapes: brace, bracket
@@ -675,7 +675,7 @@
 ///   	n(2, "fill", "red")
 ///   })
 /// 
-/// - label (content): Content to be placed at the top/bottom/left/right of the glyph, depending on #param[stretched-glyph][dir].
+/// - label (content): Content to be placed at the top/bottom/left/right of the glyph, depending on `dir`.
 /// 
 ///   #for (i, dir) in (top, bottom, left, right).enumerate() {
 ///   	let s = fletcher.shapes.brace.with(dir: dir, label: emph[label])

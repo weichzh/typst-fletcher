@@ -17,7 +17,6 @@
 	assert(false, message: message)
 }
 
-
 // Replace `auto` with a value
 #let map-auto(value, fallback) = if value == auto { fallback } else { value }
 
