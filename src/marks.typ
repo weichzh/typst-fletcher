@@ -24,7 +24,7 @@
 /// Units are in multiples of stroke thickness.
 ///
 /// This is used to correctly implement multi-stroke marks, e.g.,
-/// #diagram(edge("<==>")). The function `mark-debug()` can help visualise a
+/// `diagram(edge("<==>"))`. The function `mark-debug()` can help visualise a
 /// mark's cap offset.
 ///
 /// ```example

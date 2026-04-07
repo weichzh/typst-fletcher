@@ -382,13 +382,13 @@
 ///
 ///   Vertex coordinates must come first, and are optional:
 ///
-///   ```typc
+/// ```typc
 ///   edge(from, to, ..) // explicit start and end nodes
 ///   edge(to, ..) == edge(auto, to, ..) // start snaps to previous node
 ///   edge(..) == edge(auto, auto, ..) // snaps to previous and next nodes
 ///   edge(from, v1, v2, ..vs, to, ..) // a multi-segmented edge
 ///   edge(from, "->", to) // for two vertices, the marks style can come in between
-///   ```
+/// ```
 ///
 ///   All vertices except the start point can be shorthand relative coordinate
 ///   string containing the characters
@@ -398,23 +398,23 @@
 ///   `label` are disambiguated by guessing based on the types. For
 ///   example, the following are equivalent:
 ///
-///   ```typc
+/// ```typc
 ///   edge((0,0), (1,0), $f$, "->")
 ///   edge((0,0), (1,0), "->", $f$)
 ///   edge((0,0), (1,0), $f$, marks: "->")
 ///   edge((0,0), (1,0), "->", label: $f$)
 ///   edge((0,0), (1,0), label: $f$, marks: "->")
-///   ```
+/// ```
 ///
 ///   Additionally, some common options are given flags that may be given as
 ///   string positional arguments. These are
 ///   `"dashed"`, `"dotted"`, `"double"`, `"triple"`, `"crossing"`, `"wave"`, `"zigzag"`, and `"coil"`.
 ///   For example, the following are equivalent:
 ///
-///   ```typc
+/// ```typc
 ///   edge((0,0), (1,0), $f$, "wave", "crossing")
 ///   edge((0,0), (1,0), $f$, decorations: "wave", crossing: true)
-///   ```
+/// ```
 ///
 /// - vertices (array): Array of (at least two) coordinates for the edge.
 ///
@@ -431,16 +431,19 @@
 ///   turning `left` or `right`.
 ///   (Bending right means the corner sticks out to the left, and vice versa.)
 ///
+/// ```example
 ///   #diagram(
 ///   	node((0,1), `from`),
 ///   	node((1,0), `to`),
 ///   	edge((0,1), (1,0), `right`, "->", corner: right),
 ///   	edge((0,1), (1,0), `left`, "->", corner: left),
 ///   )
+/// ```
 ///
 /// - bend (angle): Edge curvature. If `0deg`, the connector is a straight line;
 ///   positive angles bend clockwise.
 ///
+/// ```example
 ///   #diagram(debug: 0, {
 ///   	node((0,0), $A$)
 ///   	node((1,1), $B$)
@@ -450,17 +453,20 @@
 ///   		.map(θ => edge((0,0), (1,1), θ, bend: θ, ">->", label-side: center))
 ///   		.join()
 ///   })
+/// ```
 ///
 /// - loop-angle (angle): Angle around the node at which edge loops stick out at. Loops are arcs
 ///   with the same start/end point and a large `bend` angle (e.g.,
 ///   `120deg`). This value has no effect for non-loop edges.
 ///
+/// ```example
 ///   #diagram(debug: 0, {
 ///   	node((0,0), $O$)
 ///   	for θ in (0deg, -90deg, 135deg) {
 ///   		edge((), "->", (), bend: 125deg, loop-angle: θ, label: θ)
 ///   	}
 ///   })
+/// ```
 ///
 /// - label (content): Content for the edge label. See the
 ///   `label-pos` and `label-side` options to control
@@ -483,6 +489,7 @@
 ///   edge length. Physical and relative relative lengths work too. For example,
 ///   `100% - 1em` means `1em` from the end.
 /// 
+/// ```example
 ///   #stack(
 ///   	dir: ltr,
 ///   	spacing: 1fr,
@@ -491,6 +498,7 @@
 ///   		edge((0,0), (1,0), p, "->", label-pos: p))
 ///   	),
 ///   )
+/// ```
 ///
 ///   For `"poly"` edges (see @edge-types), a number does not specify a fraction
 ///   of the path length; instead, the $k$th vertex is at position $k/n$ where
@@ -506,6 +514,7 @@
 ///
 ///   With the default anchor (automatically set to `"south"` in this case):
 ///
+/// ```example
 ///   #diagram(
 ///   	debug: 2,
 ///   	cell-size: 8mm,
@@ -514,9 +523,11 @@
 ///   			edge((2*i,0), (2*i + 1,0), s, "->", label-sep: s)
 ///   		}
 ///   })
+/// ```
 ///
 ///   With `label-anchor` set to `"center"`:
 ///
+/// ```example
 ///   #diagram(
 ///   	debug: 2,
 ///   	cell-size: 8mm,
@@ -525,6 +536,7 @@
 ///   			edge((2*i,0), (2*i + 1,0), s, "->", label-sep: s, label-anchor: "center")
 ///   		}
 ///   })
+/// ```
 ///
 ///   Set `debug` to `2` or higher to see label anchors and
 ///   outlines as seen here.
@@ -538,9 +550,11 @@
 ///   that direction relative to the label. If `auto`, the best of `right` or
 ///   `left` is chosen.
 ///
+/// ```example
 ///   #for angle in (0deg, 90deg, auto, right, top, left) {
 ///   	diagram(edge((0,1), (2,0), "->", [#angle], label-angle: angle))
 ///   }
+/// ```
 ///
 /// - label-anchor (anchor): The CeTZ-style anchor point of the label to use for
 ///   placement (e.g., `"north-east"` or `"center"`). If `auto`, the best anchor
@@ -561,10 +575,10 @@
 ///   background (see `crossing-fill`), and can be used to adjust
 ///   the label's padding, outline, and so on.
 ///
-///   ```example
+/// ```example
 ///   #diagram(edge($f$, label-wrapper: e =>
 ///   	circle(e.label, fill: e.label-fill)))
-///   ```
+/// ```
 ///
 ///   Default: the `label-wrapper` option of `diagram()`
 ///
@@ -579,7 +593,7 @@
 ///   also be passed as convenience positional arguments), but a decoration
 ///   function may also be specified.
 ///
-///   ```example
+/// ```example
 ///   #diagram(
 ///   	$
 ///   		A edge("wave") &
@@ -592,7 +606,7 @@
 ///   			.with(amplitude: .4)
 ///   	)
 ///   )
-///   ```
+/// ```
 ///
 /// - marks (array): The marks (arrowheads) to draw along an edge's stroke. This
 ///   may be:
@@ -612,6 +626,7 @@
 ///   Shorthands are expanded into other arguments. For example,
 ///   `edge(p1, p2, "=>")` is short for `edge(p1, p2, marks: (none, "head"), "double")`, or more precisely, the result of `edge(p1, p2, ..interpret-marks-arg("=>"))`.
 ///
+/// ```example
 ///   #table(
 ///   	columns: (1fr, 4fr),
 ///   	align: (center + horizon, horizon),
@@ -634,10 +649,12 @@
 ///   		raw(repr(arg)),
 ///   	)).join()
 ///   )
+/// ```
 ///
 /// - mark-scale (percent): Scale factor for marks or arrowheads, relative to
 ///   the `stroke` thickness. See also the `mark-scale` option of `diagram()`.
 ///
+/// ```example
 ///   #diagram(
 ///   	label-sep: 10pt,
 ///   	edge-stroke: 1pt,
@@ -646,10 +663,12 @@
 ///   		edge((2*i,0), (2*i + 1,0), label: s, "->", mark-scale: s)
 ///   	}
 ///   )
+/// ```
 ///
 ///   Note that the default arrowheads scale automatically with double and
 ///   triple strokes:
 ///
+/// ```example
 ///   #diagram(
 ///   	label-sep: 10pt,
 ///   	edge-stroke: 1pt,
@@ -657,11 +676,13 @@
 ///   		edge((2*i,0), (2*i + 1,0), s, label: raw(s, lang: none))
 ///   	}
 ///   )
+/// ```
 ///
 /// - extrude (array): Draw a separate stroke for each extrusion offset to
 ///   obtain a multi-stroke effect. Offsets may be numbers (specifying multiples
 ///   of the stroke's thickness) or lengths.
 ///
+/// ```example
 ///   #diagram({
 ///   	(
 ///   		(0,),
@@ -675,6 +696,7 @@
 ///   			extrude: e, stroke: 1pt, label-sep: 1em)
 ///   	}).join()
 ///   })
+/// ```
 ///
 ///   Notice how the ends of the line need to shift a little depending on the
 ///   mark. This offset is computed with `cap-offset()`.
@@ -685,12 +707,14 @@
 ///   `crossing-fill` to give the illusion of lines crossing each
 ///    other.
 ///
+/// ```example
 ///   #diagram({
 ///   	edge((0,1), (1,0), stroke: 1pt)
 ///   	edge((0,0), (1,1), stroke: 1pt)
 ///   	edge((2,1), (3,0), stroke: 1pt)
 ///   	edge((2,0), (3,1), stroke: 1pt, crossing: true)
 ///   })
+/// ```
 ///
 ///   You can also pass `"crossing"` as a positional argument as a shorthand for
 ///   `crossing: true`.
@@ -699,6 +723,7 @@
 ///   (applicable if `crossing` is `true`) in multiples of the
 ///   normal stroke's thickness.
 ///
+/// ```example
 ///   #diagram({
 ///   	(1, 2, 4, 8).enumerate().map(((i, x)) => {
 ///   		edge((2*i, 1), (2*i + 1, 0), stroke: 1pt, label-sep: 1em)
@@ -706,12 +731,14 @@
 ///   		2pt, label-pos: 0.3, crossing: true, crossing-thickness: x)
 ///   	}).join()
 ///   })
+/// ```
 ///
 ///   Default: the `crossing-thickness` option of `diagram()`
 ///
 /// - crossing-fill (paint): Color to use behind connectors or labels to give
 ///   the illusion of crossing over other objects.
 ///
+/// ```example
 ///   #let cross(x, fill) = {
 ///   	edge((2*x + 0,1), (2*x + 1,0), stroke: 1pt)
 ///   	edge((2*x + 0,0), (2*x + 1,1), $f$, stroke: 1pt, crossing: true, crossing-fill: fill, label-fill: true)
@@ -720,12 +747,14 @@
 ///   	cross(0, white)
 ///   	cross(1, blue.lighten(50%))
 ///   })
+/// ```
 ///
 ///   Default: the `crossing-fill` option of `diagram()`
 ///
 /// - corner-radius (length, none): Radius of rounded corners for edges with
 ///   multiple segments. Note that `none` is distinct from `0pt`.
 ///
+/// ```example
 ///   #for (i, r) in (none, 0pt, 5pt).enumerate() {
 ///   	if i > 0 { h(1fr) }
 ///   	diagram(
@@ -733,6 +762,7 @@
 ///   		edge((3*i, 0), "r,t,rd,r", "=>", raw(repr(r)), label-pos: 0.6, corner-radius: r)
 ///   	)
 ///   }
+/// ```
 ///
 ///   This length specifies the corner radius for right-angled bends. The actual
 ///   radius is smaller for acute angles and larger for obtuse angles to balance
@@ -746,16 +776,18 @@
 ///   `(s, s)`. Shifts can absolute lengths (e.g., `5pt`) or coordinate
 ///   differences (e.g., `0.1`).
 ///
+/// ```example
 ///   #diagram(
 ///   	node((0,0), $A$), node((1,0), $B$),
 ///   	edge((0,0), (1,0), "->", `3pt`, shift: 3pt),
 ///   	edge((0,0), (1,0), "->", `-3pt`, shift: -3pt, label-side: right),
 ///   )
+/// ```
 ///
 ///   If an edge has many vertices, the shifts only affect the first and last
 ///   segments of the edge.
 ///
-///   ```example
+/// ```example
 ///   #diagram(
 ///   	node-fill: luma(70%),
 ///   	node((0,0), [Hello]),
@@ -763,7 +795,7 @@
 ///   	edge("u,r,d", "-->", shift: 8pt),
 ///   	node((1,0), [World]),
 ///   )
-///   ```
+/// ```
 ///
 /// - snap-to (pair): The nodes the start and end of an edge should snap to.
 /// Each node can be a position or node `name`, or `none` to disable
@@ -785,17 +817,15 @@
 ///   When `floating: true`, the edge is wrapped in `cetz.draw.floating(..)` which
 ///   prevents the objects from affecting the canvas' bounding box.
 /// 
-///   ```example
-///   An inline #diagram($
-/// 		A edge(->, bend: #45deg, floating: #true) & B
-/// 	$) diagram.
+///   An inline `#diagram($ A edge(->, bend: #45deg, floating: #true) & B $)` diagram.
 /// 
+/// ```example
 /// 	#rect(width: 7cm, align(center, diagram(
 /// 		node((0,1), $A$),
 /// 		edge("->", floating: true, [centered despite label]),
 /// 		node((0,0), $B$),
 /// 	)))
-///   ```
+/// ```
 ///
 /// - post (function): Callback function to intercept `cetz` objects before they
 ///   are drawn to the canvas.
