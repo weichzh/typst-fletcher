@@ -6,7 +6,7 @@
 
 
 
-/// Interpret #the-param[diagram][axes].
+/// Interpret the `axes` option of `diagram()`.
 ///
 /// Returns a dictionary with:
 /// - `x`: Whether $u$ is reversed
@@ -338,53 +338,53 @@
 ///   A single length `d` is short for `(d, d)`.
 ///
 /// - node-inset (length, pair of lengths): Default value of
-///   #the-param[node][inset].
+///   the `inset` option of `node()`.
 ///
 /// - node-outset (length, pair of lengths): Default value of
-///   #the-param[node][outset].
+///   the `outset` option of `node()`.
 ///
 /// - node-shape (rect, circle, function): Default value of
-///   #the-param[node][shape].
+///   the `shape` option of `node()`.
 ///
-/// - node-stroke (stroke, none): Default value of #the-param[node][stroke].
+/// - node-stroke (stroke, none): Default value of the `stroke` option of `node()`.
 ///
 ///   The default stroke is folded with the stroke specified for the node. For
-///   example, if `node-stroke` is `1pt` and #the-param[node][stroke] is `red`,
+///   example, if `node-stroke` is `1pt` and the `stroke` option of `node()` is `red`,
 ///   then the resulting stroke is `1pt + red`.
 ///
-/// - node-fill (paint): Default value of #the-param[node][fill].
+/// - node-fill (paint): Default value of the `fill` option of `node()`.
 ///
-/// - edge-stroke (stroke): Default value of #the-param[edge][stroke]. By
+/// - edge-stroke (stroke): Default value of the `stroke` option of `edge()`. By
 ///   default, this is chosen to match the thickness of mathematical arrows such
 ///   as $A -> B$ in the current font size.
 ///
 ///   The default stroke is folded with the stroke specified for the edge. For
-///   example, if `edge-stroke` is `1pt` and #the-param[edge][stroke] is `red`,
+///   example, if `edge-stroke` is `1pt` and the `stroke` option of `edge()` is `red`,
 ///   then the resulting stroke is `1pt + red`.
 ///
 /// - node-corner-radius (length, none): Default value of
-///   #the-param[node][corner-radius].
+///   the `corner-radius` option of `node()`.
 ///
 /// - edge-corner-radius (length, none): Default value of
-///   #the-param[edge][corner-radius].
+///   the `corner-radius` option of `edge()`.
 ///
-/// - node-defocus (number): Default value of #the-param[node][defocus].
+/// - node-defocus (number): Default value of the `defocus` option of `node()`.
 ///
-/// - label-sep (length): Default value of #the-param[edge][label-sep].
+/// - label-sep (length): Default value of the `label-sep` option of `edge()`.
 ///
-/// - label-size (length): Default value of #the-param[edge][label-size].
+/// - label-size (length): Default value of the `label-size` option of `edge()`.
 ///
 /// - label-wrapper (function): Default value of
-///   #the-param[edge][label-wrapper].
+///   the `label-wrapper` option of `edge()`.
 ///
-/// - mark-scale (percent): Default value of #the-param[edge][mark-scale].
+/// - mark-scale (percent): Default value of the `mark-scale` option of `edge()`.
 ///
 /// - crossing-fill (paint): Color to use behind connectors or labels to give
 ///   the illusion of crossing over other objects. See
-///   #the-param[edge][crossing-fill].
+///   the `crossing-fill` option of `edge()`.
 ///
 /// - crossing-thickness (number): Default thickness of the occlusion made by
-///   crossing connectors. See #param[edge][crossing-thickness].
+///   crossing connectors. See `crossing-thickness`.
 ///
 /// - axes (pair of directions): The orientation of the diagram's axes.
 ///
@@ -395,7 +395,7 @@
 ///   #stack(
 ///   	dir: ltr,
 ///   	spacing: 1fr,
-///   	fletcher.diagram(
+///   	diagram(
 ///   		axes: (ltr, ttb),
 ///   		debug: 1,
 ///   		node((0,0), $(0,0)$),
@@ -404,7 +404,7 @@
 ///   		node((1,1), $(1,1)$),
 ///   		node((0.5,0.5), `axes: (ltr, ttb)`),
 ///   	),
-///   	fletcher.diagram(
+///   	diagram(
 ///   		axes: (ltr, btt),
 ///   		debug: 1,
 ///   		node((0,0), $(0,0)$),
@@ -413,7 +413,7 @@
 ///   		node((1,1), $(1,1)$),
 ///   		node((0.5,0.5), `axes: (ltr, btt)`),
 ///   	),
-///   	fletcher.diagram(
+///   	diagram(
 ///   		axes: (ttb, ltr),
 ///   		debug: 1,
 ///   		node((0,0), $(0,0)$),

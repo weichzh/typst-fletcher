@@ -28,7 +28,7 @@
 /// mark's cap offset.
 ///
 /// ```example
-/// #fletcher.mark-debug("O")
+/// #mark-debug("O")
 /// ```
 ///
 /// The dashed green line shows the stroke tip end as a function of $y$, and the
@@ -69,7 +69,7 @@
 /// entries, and evaluating any closure entries.
 ///
 /// ```example
-/// #context fletcher.resolve-mark((
+/// #context resolve-mark((
 /// 	a: 1,
 /// 	b: 2,
 /// 	c: mark => mark.a + mark.b,
@@ -188,10 +188,10 @@
 ///
 /// ```example
 /// #context {
-/// 	let mark = fletcher.MARKS.get().stealth
+/// 	let mark = MARKS.get().stealth
 /// 	// make a wide stealth arrow
 /// 	mark += (angle: 45deg)
-/// 	fletcher.mark-debug(mark)
+/// 	mark-debug(mark)
 /// }
 /// ```
 ///

@@ -12,7 +12,7 @@
 ///   - `centers`
 ///   - `spacing`
 ///   - `flip`
-///   The `grid` is passed to #the-param[diagram][render].
+///   The `grid` is passed to the `render` option of `diagram()`.
 /// - uv (array): Elastic coordinate, `(float, float)`.
 #let uv-to-xy(grid, uv) = {
 	let (i, j) = vector.sub(vector-2d(uv), grid.origin)
@@ -50,7 +50,7 @@
 /// (they're elastic). Uses a balanced finite differences approximation.
 ///
 /// - grid (dictionary): Representation of the grid layout.
-///   The `grid` is passed to #the-param[diagram][render].
+///   The `grid` is passed to the `render` option of `diagram()`.
 /// - uv (array): The point `(float, float)` in the $u v$-manifold where the
 ///   shift tangent vector is rooted.
 /// - duv (array): The shift tangent vector `(float, float)` in $u v$ coordinates.
@@ -201,14 +201,14 @@
 /// `xy-to-uv()`. The `grid` may be supplied in the context object `ctx`.
 ///
 /// If `grid` is not supplied, *coordinate resolution may fail*, in which case 
-/// the vector #fletcher.NAN_COORD is returned.
+/// the vector `NAN_COORD` is returned.
 ///
 /// - ctx (dictionary): CeTZ canvas context object, additionally containing:
 ///   - `target-system`: the target coordinate system to resolve to, one of
 ///     `"uv"` or `"xyz"`.
 ///   - `grid` (optional): the diagram's grid specification, defining the
 ///     coordinate maps $u v <-> x y$. If not given, coordinates requiring this
-///     map resolve to #fletcher.NAN_COORD.
+///     map resolve to `NAN_COORD`.
 ///
 /// - ..coordinates (coordinate): CeTZ-style coordinate expression(s), e.g.,
 ///   `(1, 2)`, `(45deg, 2cm)`, or `(rel: (+1, 0), to: "name")`.

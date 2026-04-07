@@ -375,9 +375,9 @@
 ///
 ///
 /// - ..args (any): An edge's positional arguments may specify:
-///   - the edge's #param[edge][vertices], each specified with a CeTZ-style coordinate
-///   - the #param[edge][label] content
-///   - arrow #param[edge][marks], like `"=>"` or `"<<-|-o"`
+///   - the edge's `vertices`, each specified with a CeTZ-style coordinate
+///   - the `label` content
+///   - arrow `marks`, like `"=>"` or `"<<-|-o"`
 ///   - other style flags, like `"double"` or `"wave"`
 ///
 ///   Vertex coordinates must come first, and are optional:
@@ -394,8 +394,8 @@
 ///   string containing the characters
 ///   ${#"lrudtbnesw".clusters().map(raw).join($, $)}$ or commas.
 ///
-///   If given as positional arguments, an edge's #param[edge][marks] and
-///   #param[edge][label] are disambiguated by guessing based on the types. For
+///   If given as positional arguments, an edge's `marks` and
+///   `label` are disambiguated by guessing based on the types. For
 ///   example, the following are equivalent:
 ///
 ///   ```typc
@@ -408,7 +408,7 @@
 ///
 ///   Additionally, some common options are given flags that may be given as
 ///   string positional arguments. These are
-///   #fletcher.EDGE_FLAGS.keys().map(repr).map(raw).join([, ], last: [, and ]).
+///   `"dashed"`, `"dotted"`, `"double"`, `"triple"`, `"crossing"`, `"wave"`, `"zigzag"`, and `"coil"`.
 ///   For example, the following are equivalent:
 ///
 ///   ```typc
@@ -420,11 +420,11 @@
 ///
 ///   Vertices can also be specified as leading positional arguments, but if so,
 ///   the `vertices` option must be empty. If the number of vertices is greater
-///   than two, #param[edge][kind] defaults to `"poly"`.
+///   than two, `kind` defaults to `"poly"`.
 ///
 /// - kind (string): The kind of the edge, one of `"line"`, `"arc"`, or `"poly"`.
 ///   This is chosen automatically based on the presence of other options
-///   (#param[edge][bend] implies `"arc"`, #param[edge][corner] or additional
+///   (`bend` implies `"arc"`, `corner` or additional
 ///   vertices implies `"poly"`).
 ///
 /// - corner (none, left, right): Whether to create a right-angled corner,
@@ -452,7 +452,7 @@
 ///   })
 ///
 /// - loop-angle (angle): Angle around the node at which edge loops stick out at. Loops are arcs
-///   with the same start/end point and a large #param[edge][bend] angle (e.g.,
+///   with the same start/end point and a large `bend` angle (e.g.,
 ///   `120deg`). This value has no effect for non-loop edges.
 ///
 ///   #diagram(debug: 0, {
@@ -463,15 +463,15 @@
 ///   })
 ///
 /// - label (content): Content for the edge label. See the
-///   #param[edge][label-pos] and #param[edge][label-side] options to control
-///   the position (and #param[edge][label-sep] and #param[edge][label-anchor]
+///   `label-pos` and `label-side` options to control
+///   the position (and `label-sep` and `label-anchor`
 ///   for finer control).
 ///
 /// - label-side (left, right, center): Which side of the edge to place the
 ///   label on, viewed as you walk along it from base to tip.
 ///
 ///   If `center`, then the label is placed directly on the edge and
-///   #param[edge][label-fill] defaults to `true`. When `auto`, a value of
+///   `label-fill` defaults to `true`. When `auto`, a value of
 ///   `left` or `right` is  automatically chosen so that the label is:
 ///    - roughly above the connector, in the case of straight lines; or
 ///    - on the outside of the curve, in the case of arcs.
@@ -486,7 +486,7 @@
 ///   #stack(
 ///   	dir: ltr,
 ///   	spacing: 1fr,
-///   	..(0, 0.25, 0.5, 0.75, 1).map(p => fletcher.diagram(
+///   	..(0, 0.25, 0.5, 0.75, 1).map(p => diagram(
 ///   		cell-size: 1cm,
 ///   		edge((0,0), (1,0), p, "->", label-pos: p))
 ///   	),
@@ -515,7 +515,7 @@
 ///   		}
 ///   })
 ///
-///   With #param[edge][label-anchor] set to `"center"`:
+///   With `label-anchor` set to `"center"`:
 ///
 ///   #diagram(
 ///   	debug: 2,
@@ -526,10 +526,10 @@
 ///   		}
 ///   })
 ///
-///   Set #param[diagram][debug] to `2` or higher to see label anchors and
+///   Set `debug` to `2` or higher to see label anchors and
 ///   outlines as seen here.
 ///
-///   Default: #the-param[diagram][label-sep]
+///   Default: the `label-sep` option of `diagram()`
 ///
 /// - label-angle (angle, left, right, top, bottom, auto): Angle to rotate the
 ///   label (counterclockwise).
@@ -544,21 +544,21 @@
 ///
 /// - label-anchor (anchor): The CeTZ-style anchor point of the label to use for
 ///   placement (e.g., `"north-east"` or `"center"`). If `auto`, the best anchor
-///   is chosen based on #param[edge][label-side], #param[edge][label-angle],
+///   is chosen based on `label-side`, `label-angle`,
 ///   and the edge's direction.
 ///
 /// - label-fill (bool, paint): The background fill for the label. If `true`,
-///   defaults to the value of #param[edge][crossing-fill]. If `false` or
+///   defaults to the value of `crossing-fill`. If `false` or
 ///   `none`, no fill is used. If `auto`, then defaults to `true` if the label
-///   is covering the edge (#param[edge][label-side]`: center`).
+///   is covering the edge (`label-side`: center).
 ///
 /// - label-size (auto, length): The default text size to apply to edge labels.
 ///
-///   Default: #the-param[diagram][label-size]
+///   Default: the `label-size` option of `diagram()`
 ///
 /// - label-wrapper (auto, function): Callback function accepting a node
 ///   dictionary and returning the label content. This is used to add a label
-///   background (see #param[edge][crossing-fill]), and can be used to adjust
+///   background (see `crossing-fill`), and can be used to adjust
 ///   the label's padding, outline, and so on.
 ///
 ///   ```example
@@ -566,10 +566,10 @@
 ///   	circle(e.label, fill: e.label-fill)))
 ///   ```
 ///
-///   Default: #the-param[diagram][label-wrapper]
+///   Default: the `label-wrapper` option of `diagram()`
 ///
 /// - stroke (stroke): Stroke style of the edge. Arrows/marks scale with the
-///   stroke thickness (and with #param[edge][mark-scale]).
+///   stroke thickness (and with `mark-scale`).
 ///
 /// - dash (string): The stroke's dash style. This is also set by some mark
 ///   styles. For example, setting `marks: "<..>"` applies `dash: "dotted"`.
@@ -601,16 +601,16 @@
 ///     shorthand strings are of the form $M_1 L M_2$ or $M_1 L M_2 L M_3$, etc,
 ///     where
 ///
-///     $ M_i in #`fletcher.MARKS` = #context math.mat(..fletcher.MARKS.get().keys().map(i => $#raw(lang: none, i),$).chunks(6), delim: "{") $
+///     $M_i$ is a mark name from `MARKS`
 ///     is a mark name and
-///     $ L in #`fletcher.LINE_ALIASES` = {#fletcher.LINE_ALIASES.keys().map(raw.with(lang: none)).join($,$)} $
+///     $L$ is a line style from `LINE_ALIASES`
 ///     is the line style.
 ///
 ///   - An array of mark names as strings or _mark objects_ (dictionaries of
 ///     parameters with a `draw` entry).
 ///
 ///   Shorthands are expanded into other arguments. For example,
-///   `edge(p1, p2, "=>")` is short for `edge(p1, p2, marks: (none, "head"), "double")`, or more precisely, the result of `edge(p1, p2, ..fletcher.interpret-marks-arg("=>"))`.
+///   `edge(p1, p2, "=>")` is short for `edge(p1, p2, marks: (none, "head"), "double")`, or more precisely, the result of `edge(p1, p2, ..interpret-marks-arg("=>"))`.
 ///
 ///   #table(
 ///   	columns: (1fr, 4fr),
@@ -630,13 +630,13 @@
 ///         ("X", (inherit: "head", size: 15, sharpness: 40deg),), ((inherit:
 ///         "circle", pos: 0.5, fill: auto),),
 ///   	).map(arg => (
-///   		fletcher.diagram(edge((0,0), (1,0), marks: arg, stroke: 0.8pt)),
+///   		diagram(edge((0,0), (1,0), marks: arg, stroke: 0.8pt)),
 ///   		raw(repr(arg)),
 ///   	)).join()
 ///   )
 ///
 /// - mark-scale (percent): Scale factor for marks or arrowheads, relative to
-///   the #param[edge][stroke] thickness. See also #the-param[diagram][mark-scale].
+///   the `stroke` thickness. See also the `mark-scale` option of `diagram()`.
 ///
 ///   #diagram(
 ///   	label-sep: 10pt,
@@ -679,10 +679,10 @@
 ///   Notice how the ends of the line need to shift a little depending on the
 ///   mark. This offset is computed with `cap-offset()`.
 ///
-///   See also #the-param[node][extrude].
+///   See also the `extrude` option of `node()`.
 ///
 /// - crossing (bool): If `true`, draws a backdrop of color
-///   #param[edge][crossing-fill] to give the illusion of lines crossing each
+///   `crossing-fill` to give the illusion of lines crossing each
 ///    other.
 ///
 ///   #diagram({
@@ -696,7 +696,7 @@
 ///   `crossing: true`.
 ///
 /// - crossing-thickness (number): Thickness of the "crossing" background stroke
-///   (applicable if #param[edge][crossing] is `true`) in multiples of the
+///   (applicable if `crossing` is `true`) in multiples of the
 ///   normal stroke's thickness.
 ///
 ///   #diagram({
@@ -707,7 +707,7 @@
 ///   	}).join()
 ///   })
 ///
-///   Default: #the-param[diagram][crossing-thickness]
+///   Default: the `crossing-thickness` option of `diagram()`
 ///
 /// - crossing-fill (paint): Color to use behind connectors or labels to give
 ///   the illusion of crossing over other objects.
@@ -721,14 +721,14 @@
 ///   	cross(1, blue.lighten(50%))
 ///   })
 ///
-///   Default: #the-param[diagram][crossing-fill]
+///   Default: the `crossing-fill` option of `diagram()`
 ///
 /// - corner-radius (length, none): Radius of rounded corners for edges with
 ///   multiple segments. Note that `none` is distinct from `0pt`.
 ///
 ///   #for (i, r) in (none, 0pt, 5pt).enumerate() {
 ///   	if i > 0 { h(1fr) }
-///   	fletcher.diagram(
+///   	diagram(
 ///   		edge-stroke: 1pt,
 ///   		edge((3*i, 0), "r,t,rd,r", "=>", raw(repr(r)), label-pos: 0.6, corner-radius: r)
 ///   	)
@@ -738,7 +738,7 @@
 ///   radius is smaller for acute angles and larger for obtuse angles to balance
 ///   things visually. (Trust me, it looks naff otherwise!)
 ///
-///   Default: #the-param[diagram][edge-corner-radius]
+///   Default: the `edge-corner-radius` option of `diagram()`
 ///
 /// - shift (length, number, pair): Amount to shift the edge sideways by,
 ///   perpendicular to its direction. A pair `(from, to)` controls the shifts at
@@ -766,10 +766,10 @@
 ///   ```
 ///
 /// - snap-to (pair): The nodes the start and end of an edge should snap to.
-/// Each node can be a position or node #param[node][name], or `none` to disable
-/// snapping. See also #the-param[node][snap].
+/// Each node can be a position or node `name`, or `none` to disable
+/// snapping. See also the `snap` option of `node()`.
 ///
-///   By default, an edge's first and last #param[edge][vertices] snap to nearby
+///   By default, an edge's first and last `vertices` snap to nearby
 ///   nodes. This option can be used in case automatic snapping fails (if there
 ///   are many nodes close together, for example.)
 ///
@@ -1151,7 +1151,7 @@
 }
 
 
-/// Apply #the-param[edge][shift] by translating edge vertices.
+/// Apply the `shift` option of `edge()` by translating edge vertices.
 ///
 /// - grid (dictionary): Representation of the grid layout. This is needed to
 ///   support shifts specified as coordinate lengths.

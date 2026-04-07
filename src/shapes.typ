@@ -5,12 +5,12 @@
 /// The standard rectangle node shape.
 ///
 /// A string `"rect"` or the element function `rect` given to
-/// #the-param[node][shape] are interpreted as this shape.
+/// the `shape` option of `node()` are interpreted as this shape.
 ///
 /// #diagram(
 /// 	node-stroke: green,
 /// 	node-fill: green.lighten(90%),
-/// 	node((0,0), `rect`, shape: fletcher.shapes.rect)
+/// 	node((0,0), `rect`, shape: rect)
 /// )
 ///
 #let rect(node, extrude) = {
@@ -25,12 +25,12 @@
 /// The standard circle node shape.
 ///
 /// A string `"circle"` or the element function `circle` given to
-/// #the-param[node][shape] are interpreted as this shape.
+/// the `shape` option of `node()` are interpreted as this shape.
 ///
 /// #diagram(
 /// 	node-stroke: red,
 /// 	node-fill: red.lighten(90%),
-/// 	node((0,0), `circle`, shape: fletcher.shapes.circle)
+/// 	node((0,0), `circle`, shape: circle)
 /// )
 ///
 #let circle(node, extrude) = draw.circle((0, 0), radius: node.radius + extrude)
@@ -40,7 +40,7 @@
 /// #diagram(
 /// 	node-stroke: orange,
 /// 	node-fill: orange.lighten(90%),
-/// 	node((0,0), `ellipse`, shape: fletcher.shapes.ellipse)
+/// 	node((0,0), `ellipse`, shape: ellipse)
 /// )
 ///
 /// - scale (number): Scale factor for ellipse radii.
@@ -57,7 +57,7 @@
 /// #diagram(
 /// 	node-stroke: teal,
 /// 	node-fill: teal.lighten(90%),
-/// 	node((0,0), `pill`, shape: fletcher.shapes.pill)
+/// 	node((0,0), `pill`, shape: pill)
 /// )
 ///
 #let pill(node, extrude) = {
@@ -75,7 +75,7 @@
 /// #diagram(
 /// 	node-stroke: olive,
 /// 	node-fill: olive.lighten(90%),
-/// 	node((0,0), `parallelogram`, shape: fletcher.shapes.parallelogram)
+/// 	node((0,0), `parallelogram`, shape: parallelogram)
 /// )
 ///
 /// - angle (angle): Angle of the slant, `0deg` is a rectangle. Don't set to
@@ -84,7 +84,7 @@
 /// - fit (number): Adjusts how comfortably the parallelogram fits the label's bounding box.
 ///
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
-///   	let s = fletcher.shapes.parallelogram.with(fit: fit, angle: 35deg)
+///   	let s = parallelogram.with(fit: fit, angle: 35deg)
 ///   	let l = box(
 ///   		stroke: (dash: "dashed", thickness: 0.5pt),
 ///   		inset: 10pt,
@@ -126,7 +126,7 @@
 /// #diagram(
 /// 	node-stroke: green,
 /// 	node-fill: green.lighten(90%),
-/// 	node((0,0), `trapezium`, shape: fletcher.shapes.trapezium)
+/// 	node((0,0), `trapezium`, shape: trapezium)
 /// )
 ///
 /// - angle (angle): Angle of the slant, `0deg` is a rectangle. Don't set to
@@ -135,7 +135,7 @@
 /// - fit (number): Adjusts how comfortably the trapezium fits the label's bounding box.
 ///
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
-///   	let s = fletcher.shapes.trapezium.with(fit: fit, angle: 35deg)
+///   	let s = trapezium.with(fit: fit, angle: 35deg)
 ///   	let l = box(
 ///   		stroke: (dash: "dashed", thickness: 0.5pt),
 ///   		inset: 10pt,
@@ -184,13 +184,13 @@
 /// #diagram(
 /// 	node-stroke: purple,
 /// 	node-fill: purple.lighten(90%),
-/// 	node((0,0), `diamond`, shape: fletcher.shapes.diamond)
+/// 	node((0,0), `diamond`, shape: diamond)
 /// )
 ///
 /// - fit (number): Adjusts how comfortably the diamond fits the label's bounding box.
 ///
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
-///   	let s = fletcher.shapes.diamond.with(fit: fit)
+///   	let s = diamond.with(fit: fit)
 ///   	let l = box(
 ///   		stroke: (dash: "dashed", thickness: 0.5pt),
 ///   		inset: 10pt,
@@ -221,14 +221,14 @@
 
 /// An isosceles triangle node shape.
 ///
-/// One of #param[triangle][angle] or #param[triangle][aspect] may be given, but
+/// One of `angle` or `aspect` may be given, but
 /// not both. The triangle's base coincides with the label's base and widens to
 /// enclose the label; see https://www.desmos.com/calculator/i4i9svunj4.
 ///
 /// #diagram(
 /// 	node-stroke: fuchsia,
 /// 	node-fill: fuchsia.lighten(90%),
-/// 	node((0,0), `triangle`, shape: fletcher.shapes.triangle)
+/// 	node((0,0), `triangle`, shape: triangle)
 /// )
 ///
 /// - dir (top, bottom, left, right): Direction the triangle points.
@@ -238,7 +238,7 @@
 /// - fit (number): Adjusts how comfortably the triangle fits the label's bounding box.
 ///
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
-///   	let s = fletcher.shapes.triangle.with(fit: fit, angle: 120deg)
+///   	let s = triangle.with(fit: fit, angle: 120deg)
 ///   	let l = box(
 ///   		stroke: (dash: "dashed", thickness: 0.5pt),
 ///   		inset: 10pt,
@@ -290,7 +290,7 @@
 /// #diagram(
 /// 	node-stroke: eastern,
 /// 	node-fill: eastern.lighten(90%),
-/// 	node((0,0), `house`, shape: fletcher.shapes.house)
+/// 	node((0,0), `house`, shape: house)
 /// )
 ///
 /// - dir (top, bottom, left, right): Direction of the roof of the house.
@@ -330,7 +330,7 @@
 /// #diagram(
 /// 	node-stroke: yellow,
 /// 	node-fill: yellow.lighten(90%),
-/// 	node((0,0), `chevron`, shape: fletcher.shapes.chevron)
+/// 	node((0,0), `chevron`, shape: chevron)
 /// )
 ///
 /// - dir (top, bottom, left, right): Direction the chevron points.
@@ -338,7 +338,7 @@
 /// - fit (number): Adjusts how comfortably the chevron fits the label's bounding box.
 ///
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
-///   	let s = fletcher.shapes.chevron.with(fit: fit)
+///   	let s = chevron.with(fit: fit)
 ///   	let l = box(
 ///   		stroke: (dash: "dashed", thickness: 0.5pt),
 ///   		inset: 10pt,
@@ -394,14 +394,14 @@
 /// #diagram(
 /// 	node-stroke: aqua,
 /// 	node-fill: aqua.lighten(90%),
-/// 	node((0,0), `hexagon`, shape: fletcher.shapes.hexagon)
+/// 	node((0,0), `hexagon`, shape: hexagon)
 /// )
 ///
 /// - angle (angle): Half the exterior angle, `0deg` being a rectangle.
 /// - fit (number): Adjusts how comfortably the hexagon fits the label's bounding box.
 ///
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
-///   	let s = fletcher.shapes.hexagon.with(fit: fit)
+///   	let s = hexagon.with(fit: fit)
 ///   	let l = box(
 ///   		stroke: (dash: "dashed", thickness: 0.5pt),
 ///   		inset: 10pt,
@@ -441,7 +441,7 @@
 /// #diagram(
 /// 	node-stroke: maroon,
 /// 	node-fill: maroon.lighten(90%),
-/// 	node((0,0), `octagon`, shape: fletcher.shapes.octagon)
+/// 	node((0,0), `octagon`, shape: octagon)
 /// )
 ///
 /// - truncate (number, length): Size of the truncated corners. A number is
@@ -475,13 +475,13 @@
 /// #diagram(
 /// 	node-stroke: gray,
 /// 	node-fill: gray.lighten(90%),
-/// 	node((0,0), `cylinder`, shape: fletcher.shapes.cylinder)
+/// 	node((0,0), `cylinder`, shape: cylinder)
 /// )
 ///
 /// - fit (number): Adjusts how exactly the cylinder fits around the label's bounding box.
 ///
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
-///   	let s = fletcher.shapes.cylinder.with(fit: fit)
+///   	let s = cylinder.with(fit: fit)
 ///   	let l = box(
 ///   		stroke: (dash: "dashed", thickness: 0.5pt),
 ///   		inset: 10pt,
@@ -499,7 +499,7 @@
 /// - tilt (angle): Controls the perspective tilt: `0deg` is side on.
 ///
 ///   #for (i, tilt) in (10deg, 5deg, 0deg, -2deg).enumerate() {
-///   	let s = fletcher.shapes.cylinder.with(tilt: tilt)
+///   	let s = cylinder.with(tilt: tilt)
 ///   	let l = box(
 ///   		inset: 10pt,
 ///   		raw("tilt: " + repr(tilt)),
@@ -517,7 +517,7 @@
 ///   Often used to represent databases.
 ///
 ///   #for (i, rings) in ((), 4pt, 100% - 4pt, (10%, 20%)).enumerate() {
-///   	let s = fletcher.shapes.cylinder.with(rings: rings)
+///   	let s = cylinder.with(rings: rings)
 ///   	let l = box(
 ///   		inset: 10pt,
 ///   		raw("rings:\n" + repr(rings)),
@@ -567,12 +567,12 @@
 /// A stretched glyph along one side of a node.
 /// See also `shapes.brace`, `shapes.bracket`, and `shapes.paren`, which are implemented using this shape.
 ///
-/// #diagram(node((0,0), [Like this!], shape: fletcher.shapes.brace))
+/// #diagram(node((0,0), [Like this!], shape: brace))
 /// 
-/// This is especially useful when used with #param[node][enclose] nodes.
+/// This is especially useful when used with `enclose` nodes.
 /// 
 /// ```example
-/// #import fletcher.shapes: brace, bracket
+/// #import "shapes.typ": brace, bracket
 /// #diagram(
 /// 	spacing: 1cm,
 /// 	node-stroke: teal,
@@ -591,7 +591,7 @@
 ///   Note that the glyph must be chosen to match the direction.
 /// 
 ///   #for (i, dir) in (top, bottom, left, right).enumerate() {
-///   	let s = fletcher.shapes.brace.with(dir: dir)
+///   	let s = brace.with(dir: dir)
 ///   	let l = box(
 ///   		stroke: (dash: "dashed", thickness: 0.5pt),
 ///   		inset: 10pt,
@@ -609,7 +609,7 @@
 /// - sep (length): Extra distance between the glyph and the node's edge.
 /// 
 ///   #for (i, sep) in (-5pt, 0pt, 5pt).enumerate() {
-///   	let s = fletcher.shapes.brace.with(sep: sep)
+///   	let s = brace.with(sep: sep)
 ///   	let l = box(
 ///   		stroke: (dash: "dashed", thickness: 0.5pt),
 ///   		inset: 10pt,
@@ -627,7 +627,7 @@
 /// - length (relative): Size of the glyph. A relative length such as `100% + 5pt` means `5pt` more than the size of the node. This is ultimately given to the `stretch()` function.
 ///
 ///   #for (i, length) in (100%, 100% - 2em, 150%).enumerate() {
-///   	let s = fletcher.shapes.brace.with(length: length)
+///   	let s = brace.with(length: length)
 ///   	let l = box(
 ///   		stroke: (dash: "dashed", thickness: 0.5pt),
 ///   		inset: 10pt,
@@ -645,7 +645,7 @@
 /// - glyph (symbol, content): The glyph to use. This works best with glyphs that can be stretched with the #link("https://typst.app/docs/reference/math/stretch/")[`stretch()` function], but any glyph or equation can be used.
 /// 
 ///   #for (i, glyphtxt) in ("brace.b", "bracket.b", "paren.b", "arrow.l.r", "sqrt(pi)").enumerate() {
-///   	let s = fletcher.shapes.stretched-glyph.with(glyph: eval(glyphtxt, mode: "math"))
+///   	let s = stretched-glyph.with(glyph: eval(glyphtxt, mode: "math"))
 ///   	let l = box(
 ///   		stroke: (dash: "dashed", thickness: 0.5pt),
 ///   		inset: 10pt,
@@ -670,15 +670,15 @@
 ///   		raw(key + ": " + value)
 ///   	)
 ///   	let n(i, key, value) = node((i, 0), l(key, value),
-///   		shape: fletcher.shapes.brace.with(..((key): eval(value))))
+///   		shape: brace.with(..((key): eval(value))))
 ///   	n(1, "size", "3em")
 ///   	n(2, "fill", "red")
 ///   })
 /// 
-/// - label (content): Content to be placed at the top/bottom/left/right of the glyph, depending on #param[stretched-glyph][dir].
+/// - label (content): Content to be placed at the top/bottom/left/right of the glyph, depending on `dir`.
 /// 
 ///   #for (i, dir) in (top, bottom, left, right).enumerate() {
-///   	let s = fletcher.shapes.brace.with(dir: dir, label: emph[label])
+///   	let s = brace.with(dir: dir, label: emph[label])
 ///   	diagram(node((i, 0), strong[NODE],
 ///   		inset: 4pt,
 ///   		shape: s,
@@ -691,7 +691,7 @@
 /// - label-sep (length): Separation between label and glyph.
 /// 
 ///   #for (i, sep) in (-5pt, 0pt, 5pt, 10pt).enumerate() {
-///   	let s = fletcher.shapes.brace.with(dir: top, label: [#sep], label-sep: sep)
+///   	let s = brace.with(dir: top, label: [#sep], label-sep: sep)
 ///   	diagram(node((i, 0), strong[NODE],
 ///   		inset: 4pt,
 ///   		shape: s,
