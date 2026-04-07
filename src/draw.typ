@@ -694,7 +694,7 @@
 /// Make diagram contents invisible, with or without affecting layout. Works by
 /// wrapping final drawing objects in `cetz.draw.hide`.
 ///
-/// #example(```
+/// ```example
 /// rect(diagram({
 /// 	hide({
 /// 		node((0,0), [Can't see me])
@@ -702,7 +702,7 @@
 /// 	})
 /// 	node((1,1), [Can see me])
 /// }))
-/// ```)
+/// ```
 ///
 /// - objects (content, array): Diagram objects to hide.
 /// - bounds (bool): If `false`, layout is as if the objects were never there;

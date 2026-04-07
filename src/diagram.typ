@@ -298,7 +298,7 @@
 ///   The results of `node()` and `edge()` can be _joined_, meaning you can
 ///   specify them as separate arguments, or in a block:
 ///
-///   ```typ
+/// ```example
 ///   #diagram(
 ///   	// one object per argument
 ///   	node((0, 0), $A$),
@@ -311,17 +311,17 @@
 ///   	},
 ///   	for x in range(4) { node((x, 1), [#x]) },
 ///   )
-///   ```
+/// ```
 ///
 ///   Nodes and edges can also be specified in math-mode.
 ///
-///   ```typ
+/// ```example
 ///   #diagram($
 ///   	A & B \          // two nodes at (0,0) and (1,0)
 ///   	C edge(->) & D \ // an edge from (0,1) to (1,1)
 ///   	node(sqrt(pi), stroke: #1pt) // a node with options
 ///   $)
-///   ```
+/// ```
 ///
 /// - debug (bool, 1, 2, 3): Level of detail for drawing debug information.
 ///   Level `1` or `true` shows a coordinate grid; higher levels show bounding boxes and
@@ -392,6 +392,7 @@
 ///   the $y$ coordinate increase up the page, use `(ltr, btt)`. For the matrix
 ///   convention `(row, column)`, use `(ttb, ltr)`.
 ///
+/// ```example
 ///   #stack(
 ///   	dir: ltr,
 ///   	spacing: 1fr,
@@ -423,6 +424,7 @@
 ///   		node((0.5,0.5), `axes: (ttb, ltr)`),
 ///   	),
 ///   )
+/// ```
 ///
 /// - render (function): After the node sizes and grid layout have been
 ///   determined, the `render` function is called with the following arguments:

@@ -263,6 +263,7 @@
 /// points) and the tangent to the arc and the first point.
 /// -> dictionary
 ///
+/// ```example
 /// #diagram(spacing: 2cm, {
 ///	    for (i, θ) in (0deg, 45deg, -90deg).enumerate() {
 ///         edge((2*i, 0), (2*i + 1, 0), marks: (none, "head"), bend: θ)
@@ -270,6 +271,7 @@
 ///         "dotted")
 ///     }
 /// })
+/// ```
 #let get-arc-connecting-points(from, to, angle) = {
 	// TODO: properly handle trivial arcs
 	if from == to { to = vector.add(to, (0pt, 1e-4pt)) }

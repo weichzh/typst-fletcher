@@ -19,14 +19,14 @@
 ///
 ///   Names can sometimes be used in place of coordinates. For example:
 ///
-///   ```example
+/// ```example
 ///   #diagram(
 ///   	node((0,0), $A$, name: <A>),
 ///   	node((1,0.6), $B$, name: <B>),
 ///   	edge(<A>, <B>, "->"),
 ///   	node((rel: (1, 0), to: <B>), $C$)
 ///   )
-///   ```
+/// ```
 ///
 ///   Node names are _labels_ (instead of strings like in CeTZ) to disambiguate
 ///   them from other positional string arguments given to `edge()`. If a string
@@ -38,18 +38,18 @@
 ///   If a node is larger than its label, you can wrap the label in `align()` to
 ///   control the label alignment within the node.
 ///
-///   ```example
+/// ```example
 ///   #diagram(
 ///   	node((0,0), align(bottom + left)[¡Hola!],
 ///   		width: 3cm, height: 2cm, fill: yellow),
 ///   )
-///   ```
+/// ```
 ///
 /// - inset (length): Padding between the node's content and its outline.
 ///
 ///   In debug mode, the inset is visualised by a thin green outline.
 ///
-///   ```example
+/// ```example
 ///   #diagram(
 ///   	debug: 3,
 ///   	node-stroke: 1pt,
@@ -57,7 +57,7 @@
 ///   	edge(),
 ///   	node((1,0), [World!], inset: 10pt),
 ///   )
-///   ```
+/// ```
 ///
 ///   Defaults to the `node-inset` option of `diagram()`.
 ///
@@ -69,7 +69,7 @@
 ///
 ///   In debug mode, the outset is visualised by a thin green outline.
 ///
-///   ```example
+/// ```example
 ///   #diagram(
 ///   	debug: 3,
 ///   	node-stroke: 1pt,
@@ -77,7 +77,7 @@
 ///   	edge(),
 ///   	node((1,0), [World!], outset: 10pt),
 ///   )
-///   ```
+/// ```
 ///
 ///   Defaults to the `node-outset` option of `diagram()`.
 ///
@@ -99,7 +99,7 @@
 ///   the node's position if `enclose` is given, but still affects connecting
 ///   edges.
 ///
-///   ```example
+/// ```example
 ///   #diagram(
 ///   	node-stroke: 1pt,
 ///   	node((0,0), [ABC], name: <A>),
@@ -109,7 +109,7 @@
 ///   		enclose: (<A>, <Z>), name: <group>),
 ///   	edge(<group>, (3,0.5), stroke: teal),
 ///   )
-///   ```
+/// ```
 ///
 /// - shape (rect, circle, function): Shape of the node's outline. If `auto`,
 ///   one of `rect` or `circle` is chosen depending on the aspect ratio of the
@@ -149,6 +149,7 @@
 ///   adjustment is disabled and connectors are always directed at the node's
 ///   exact center.
 ///
+/// ```example
 ///   #stack(
 ///   	dir: ltr,
 ///   	spacing: 1fr,
@@ -163,6 +164,7 @@
 ///   		})
 ///   	})
 ///   )
+/// ```
 ///
 ///   Defaults to the `node-defocus` option of `diagram()`.
 ///
@@ -173,6 +175,7 @@
 ///   The node's fill is drawn within the boundary defined by the first offset in
 ///   the array.
 ///
+/// ```example
 ///   #diagram(
 ///   	node-stroke: 1pt,
 ///   	node-fill: red.lighten(70%),
@@ -181,6 +184,7 @@
 ///   	node((2,0), `(2, 0)`, extrude: (2, 0)),
 ///   	node((3,0), `(0, -2.5, 2mm)`, extrude: (0, -2.5, 2mm)),
 ///   )
+/// ```
 ///
 ///   See also the `extrude` option of `edge()`.
 ///

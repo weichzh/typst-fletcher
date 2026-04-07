@@ -7,11 +7,13 @@
 /// A string `"rect"` or the element function `rect` given to
 /// the `shape` option of `node()` are interpreted as this shape.
 ///
+/// ```example
 /// #diagram(
 /// 	node-stroke: green,
 /// 	node-fill: green.lighten(90%),
 /// 	node((0,0), `rect`, shape: rect)
 /// )
+/// ```
 ///
 #let rect(node, extrude) = {
 	let r = node.corner-radius
@@ -27,21 +29,25 @@
 /// A string `"circle"` or the element function `circle` given to
 /// the `shape` option of `node()` are interpreted as this shape.
 ///
+/// ```example
 /// #diagram(
 /// 	node-stroke: red,
 /// 	node-fill: red.lighten(90%),
 /// 	node((0,0), `circle`, shape: circle)
 /// )
+/// ```
 ///
 #let circle(node, extrude) = draw.circle((0, 0), radius: node.radius + extrude)
 
 /// An elliptical node shape.
 ///
+/// ```example
 /// #diagram(
 /// 	node-stroke: orange,
 /// 	node-fill: orange.lighten(90%),
 /// 	node((0,0), `ellipse`, shape: ellipse)
 /// )
+/// ```
 ///
 /// - scale (number): Scale factor for ellipse radii.
 #let ellipse(node, extrude, scale: 1) = {
@@ -54,11 +60,13 @@
 
 /// A capsule node shape.
 ///
+/// ```example
 /// #diagram(
 /// 	node-stroke: teal,
 /// 	node-fill: teal.lighten(90%),
 /// 	node((0,0), `pill`, shape: pill)
 /// )
+/// ```
 ///
 #let pill(node, extrude) = {
 	let size = node.size.map(i => i + 2*extrude)
@@ -72,17 +80,20 @@
 
 /// A slanted rectangle node shape.
 ///
+/// ```example
 /// #diagram(
 /// 	node-stroke: olive,
 /// 	node-fill: olive.lighten(90%),
 /// 	node((0,0), `parallelogram`, shape: parallelogram)
 /// )
+/// ```
 ///
 /// - angle (angle): Angle of the slant, `0deg` is a rectangle. Don't set to
 ///   `90deg` unless you want your document to be larger than the solar system.
 ///
 /// - fit (number): Adjusts how comfortably the parallelogram fits the label's bounding box.
 ///
+/// ```example
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
 ///   	let s = parallelogram.with(fit: fit, angle: 35deg)
 ///   	let l = box(
@@ -98,6 +109,7 @@
 ///   	))
 ///   	h(5mm)
 ///   }
+/// ```
 #let parallelogram(node, extrude, flip: false, angle: 20deg, fit: 0.8) = {
 	let (w, h) = node.size
 	if flip { (w, h) = (h, w) }
@@ -123,17 +135,20 @@
 
 /// An isosceles trapezium node shape.
 ///
+/// ```example
 /// #diagram(
 /// 	node-stroke: green,
 /// 	node-fill: green.lighten(90%),
 /// 	node((0,0), `trapezium`, shape: trapezium)
 /// )
+/// ```
 ///
 /// - angle (angle): Angle of the slant, `0deg` is a rectangle. Don't set to
 ///   `90deg` unless you want your document to be larger than the solar system.
 ///
 /// - fit (number): Adjusts how comfortably the trapezium fits the label's bounding box.
 ///
+/// ```example
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
 ///   	let s = trapezium.with(fit: fit, angle: 35deg)
 ///   	let l = box(
@@ -149,6 +164,7 @@
 ///   	))
 ///   	h(5mm)
 ///   }
+/// ```
 ///
 /// - dir (top, bottom, left, right): The side the shorter parallel edge is on.
 #let trapezium(node, extrude, dir: top, angle: 20deg, fit: 0.8) = {
@@ -181,14 +197,17 @@
 
 /// A rhombus node shape.
 ///
+/// ```example
 /// #diagram(
 /// 	node-stroke: purple,
 /// 	node-fill: purple.lighten(90%),
 /// 	node((0,0), `diamond`, shape: diamond)
 /// )
+/// ```
 ///
 /// - fit (number): Adjusts how comfortably the diamond fits the label's bounding box.
 ///
+/// ```example
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
 ///   	let s = diamond.with(fit: fit)
 ///   	let l = box(
@@ -204,6 +223,7 @@
 ///   	))
 ///   	h(5mm)
 ///   }
+/// ```
 #let diamond(node, extrude, fit: 0.5) = {
 	let (w, h) = node.size
 	let φ = calc.atan2(w/1pt, h/1pt)
@@ -225,11 +245,13 @@
 /// not both. The triangle's base coincides with the label's base and widens to
 /// enclose the label; see https://www.desmos.com/calculator/i4i9svunj4.
 ///
+/// ```example
 /// #diagram(
 /// 	node-stroke: fuchsia,
 /// 	node-fill: fuchsia.lighten(90%),
 /// 	node((0,0), `triangle`, shape: triangle)
 /// )
+/// ```
 ///
 /// - dir (top, bottom, left, right): Direction the triangle points.
 /// - aspect (number, auto): Aspect ratio of triangle, or the ratio of its base
@@ -237,6 +259,7 @@
 /// - angle (angle, auto): Angle of the triangle opposite the base.
 /// - fit (number): Adjusts how comfortably the triangle fits the label's bounding box.
 ///
+/// ```example
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
 ///   	let s = triangle.with(fit: fit, angle: 120deg)
 ///   	let l = box(
@@ -252,6 +275,7 @@
 ///   	))
 ///   	h(5mm)
 ///   }
+/// ```
 #let triangle(node, extrude, dir: top, angle: auto, aspect: auto, fit: 0.8) = {
 	assert(dir in (top, bottom, left, right))
 
@@ -287,11 +311,13 @@
 
 /// A pentagonal house-like node shape.
 ///
+/// ```example
 /// #diagram(
 /// 	node-stroke: eastern,
 /// 	node-fill: eastern.lighten(90%),
 /// 	node((0,0), `house`, shape: house)
 /// )
+/// ```
 ///
 /// - dir (top, bottom, left, right): Direction of the roof of the house.
 /// - angle (angle): The slant of the roof. A plain rectangle is `0deg`, and 
@@ -327,16 +353,19 @@
 
 /// A chevron node shape.
 ///
+/// ```example
 /// #diagram(
 /// 	node-stroke: yellow,
 /// 	node-fill: yellow.lighten(90%),
 /// 	node((0,0), `chevron`, shape: chevron)
 /// )
+/// ```
 ///
 /// - dir (top, bottom, left, right): Direction the chevron points.
 /// - angle (angle): The slant of the arrow. A plain rectangle is `0deg`.
 /// - fit (number): Adjusts how comfortably the chevron fits the label's bounding box.
 ///
+/// ```example
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
 ///   	let s = chevron.with(fit: fit)
 ///   	let l = box(
@@ -352,6 +381,7 @@
 ///   	))
 ///   	h(5mm)
 ///   }
+/// ```
 #let chevron(node, extrude, dir: right, angle: 30deg, fit: 0.8) = {
 	let flip = dir in (right, left) // flip along diagonal line x = y
 	let rotate = dir in (bottom, left) // rotate 180deg
@@ -391,15 +421,18 @@
 
 /// An (irregular) hexagon node shape.
 ///
+/// ```example
 /// #diagram(
 /// 	node-stroke: aqua,
 /// 	node-fill: aqua.lighten(90%),
 /// 	node((0,0), `hexagon`, shape: hexagon)
 /// )
+/// ```
 ///
 /// - angle (angle): Half the exterior angle, `0deg` being a rectangle.
 /// - fit (number): Adjusts how comfortably the hexagon fits the label's bounding box.
 ///
+/// ```example
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
 ///   	let s = hexagon.with(fit: fit)
 ///   	let l = box(
@@ -415,6 +448,7 @@
 ///   	))
 ///   	h(5mm)
 ///   }
+/// ```
 #let hexagon(node, extrude, angle: 30deg, fit: 0.8) = {
 	let (w, h) = node.size
 	let f = h/2*calc.tan(angle)*(1 - fit)
@@ -438,11 +472,13 @@
 
 /// A truncated rectangle node shape.
 ///
+/// ```example
 /// #diagram(
 /// 	node-stroke: maroon,
 /// 	node-fill: maroon.lighten(90%),
 /// 	node((0,0), `octagon`, shape: octagon)
 /// )
+/// ```
 ///
 /// - truncate (number, length): Size of the truncated corners. A number is
 ///   interpreted as a multiple of the smaller of the node's width or height.
@@ -472,14 +508,17 @@
 
 /// A 3D cylinder node shape.
 ///
+/// ```example
 /// #diagram(
 /// 	node-stroke: gray,
 /// 	node-fill: gray.lighten(90%),
 /// 	node((0,0), `cylinder`, shape: cylinder)
 /// )
+/// ```
 ///
 /// - fit (number): Adjusts how exactly the cylinder fits around the label's bounding box.
 ///
+/// ```example
 ///   #for (i, fit) in (0, 0.5, 1).enumerate() {
 ///   	let s = cylinder.with(fit: fit)
 ///   	let l = box(
@@ -495,9 +534,11 @@
 ///   	))
 ///   	h(5mm)
 ///   }
-/// 
+/// ```
+///
 /// - tilt (angle): Controls the perspective tilt: `0deg` is side on.
 ///
+/// ```example
 ///   #for (i, tilt) in (10deg, 5deg, 0deg, -2deg).enumerate() {
 ///   	let s = cylinder.with(tilt: tilt)
 ///   	let l = box(
@@ -512,10 +553,12 @@
 ///   	))
 ///   	h(5mm)
 ///   }
-/// 
+/// ```
+///
 /// - rings (length, array): Array of vertical positions to draw arcs around the body.
 ///   Often used to represent databases.
 ///
+/// ```example
 ///   #for (i, rings) in ((), 4pt, 100% - 4pt, (10%, 20%)).enumerate() {
 ///   	let s = cylinder.with(rings: rings)
 ///   	let l = box(
@@ -531,6 +574,7 @@
 ///   	))
 ///   	h(5mm)
 ///   }
+/// ```
 #let cylinder(node, extrude, fit: 0.6, tilt: 8deg, rings: ()) = {
 	if type(rings) != array { rings = (rings,) }
 
@@ -567,7 +611,9 @@
 /// A stretched glyph along one side of a node.
 /// See also `shapes.brace`, `shapes.bracket`, and `shapes.paren`, which are implemented using this shape.
 ///
+/// ```example
 /// #diagram(node((0,0), [Like this!], shape: brace))
+/// ```
 /// 
 /// This is especially useful when used with `enclose` nodes.
 /// 
@@ -590,6 +636,7 @@
 /// - dir (direction): The side of the node to place the glyph across.
 ///   Note that the glyph must be chosen to match the direction.
 /// 
+/// ```example
 ///   #for (i, dir) in (top, bottom, left, right).enumerate() {
 ///   	let s = brace.with(dir: dir)
 ///   	let l = box(
@@ -605,9 +652,11 @@
 ///   		))
 ///   	h(5mm)
 ///   }
+/// ```
 /// 
 /// - sep (length): Extra distance between the glyph and the node's edge.
 /// 
+/// ```example
 ///   #for (i, sep) in (-5pt, 0pt, 5pt).enumerate() {
 ///   	let s = brace.with(sep: sep)
 ///   	let l = box(
@@ -623,9 +672,11 @@
 ///   	))
 ///   	h(5mm)
 ///   }
+/// ```
 /// 
 /// - length (relative): Size of the glyph. A relative length such as `100% + 5pt` means `5pt` more than the size of the node. This is ultimately given to the `stretch()` function.
 ///
+/// ```example
 ///   #for (i, length) in (100%, 100% - 2em, 150%).enumerate() {
 ///   	let s = brace.with(length: length)
 ///   	let l = box(
@@ -641,9 +692,11 @@
 ///   	))
 ///   	h(5mm)
 ///   }
+/// ```
 ///
 /// - glyph (symbol, content): The glyph to use. This works best with glyphs that can be stretched with the #link("https://typst.app/docs/reference/math/stretch/")[`stretch()` function], but any glyph or equation can be used.
 /// 
+/// ```example
 ///   #for (i, glyphtxt) in ("brace.b", "bracket.b", "paren.b", "arrow.l.r", "sqrt(pi)").enumerate() {
 ///   	let s = stretched-glyph.with(glyph: eval(glyphtxt, mode: "math"))
 ///   	let l = box(
@@ -659,10 +712,12 @@
 ///   	))
 ///   	h(5mm)
 ///   }
+/// ```
 ///
 /// - ..args (any): Arguments given to the `text()` element containing the glyph.
 ///   Useful for changing color or the font size (defining overall scale without affecting its stretch length).
 /// 
+/// ```example
 ///   #diagram({
 ///   	let l(key, value) = box(
 ///   		stroke: (dash: "dashed", thickness: 0.5pt),
@@ -674,9 +729,11 @@
 ///   	n(1, "size", "3em")
 ///   	n(2, "fill", "red")
 ///   })
+/// ```
 /// 
 /// - label (content): Content to be placed at the top/bottom/left/right of the glyph, depending on `dir`.
 /// 
+/// ```example
 ///   #for (i, dir) in (top, bottom, left, right).enumerate() {
 ///   	let s = brace.with(dir: dir, label: emph[label])
 ///   	diagram(node((i, 0), strong[NODE],
@@ -687,9 +744,11 @@
 ///   	))
 ///   	h(5mm)
 ///   }
+/// ```
 ///
 /// - label-sep (length): Separation between label and glyph.
 /// 
+/// ```example
 ///   #for (i, sep) in (-5pt, 0pt, 5pt, 10pt).enumerate() {
 ///   	let s = brace.with(dir: top, label: [#sep], label-sep: sep)
 ///   	diagram(node((i, 0), strong[NODE],
@@ -700,6 +759,7 @@
 ///   	))
 ///   	h(5mm)
 ///   }
+/// ```
 ///
 #let stretched-glyph(node, extrude, glyph: sym.brace.b, dir: bottom, sep: 0pt, length: 100%, label: none, label-sep: 0.25em, ..args) = {
 	assert(type(dir) == alignment, message: "Expected direction, got " + repr(type(dir)))
