@@ -115,14 +115,9 @@
 ///   one of `rect` or `circle` is chosen depending on the aspect ratio of the
 ///   node's label.
 ///
-///   Other shapes are defined in the `fletcher.shapes`
+///   Other shapes are defined in the `shapes`
 ///   submodule, including
-///   #{
-///   	fletcher.shapes.ALL_SHAPES.pairs()
-///   	.filter(((k, v)) => type(v) != module)
-///   	.map(((k, v)) => [#raw(k)])
-///   	.join(last: [, and ])[, ]
-///   }.
+///   functions in `shapes`.
 ///
 ///   Custom shapes should be specified as a function `(node, extrude, ..parameters) => (..)`
 ///   which returns `cetz` objects.
@@ -158,7 +153,7 @@
 ///   	dir: ltr,
 ///   	spacing: 1fr,
 ///   	..(0.2, 0, -1).enumerate().map(((i, defocus)) => {
-///   		fletcher.diagram(spacing: 8mm, {
+///   		diagram(spacing: 8mm, {
 ///   			node((i, 0), raw("defocus: "+str(defocus)), stroke: black, defocus: defocus)
 ///   			for y in (-1, +1) {
 ///   				edge((i - 1, y), (i, 0))

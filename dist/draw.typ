@@ -696,7 +696,7 @@
 ///
 /// #example(```
 /// rect(diagram({
-/// 	fletcher.hide({
+/// 	hide({
 /// 		node((0,0), [Can't see me])
 /// 		edge("->")
 /// 	})

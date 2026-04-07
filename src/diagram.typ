@@ -395,7 +395,7 @@
 ///   #stack(
 ///   	dir: ltr,
 ///   	spacing: 1fr,
-///   	fletcher.diagram(
+///   	diagram(
 ///   		axes: (ltr, ttb),
 ///   		debug: 1,
 ///   		node((0,0), $(0,0)$),
@@ -404,7 +404,7 @@
 ///   		node((1,1), $(1,1)$),
 ///   		node((0.5,0.5), `axes: (ltr, ttb)`),
 ///   	),
-///   	fletcher.diagram(
+///   	diagram(
 ///   		axes: (ltr, btt),
 ///   		debug: 1,
 ///   		node((0,0), $(0,0)$),
@@ -413,7 +413,7 @@
 ///   		node((1,1), $(1,1)$),
 ///   		node((0.5,0.5), `axes: (ltr, btt)`),
 ///   	),
-///   	fletcher.diagram(
+///   	diagram(
 ///   		axes: (ttb, ltr),
 ///   		debug: 1,
 ///   		node((0,0), $(0,0)$),

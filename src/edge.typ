@@ -408,7 +408,7 @@
 ///
 ///   Additionally, some common options are given flags that may be given as
 ///   string positional arguments. These are
-///   #fletcher.EDGE_FLAGS.keys().map(repr).map(raw).join([, ], last: [, and ]).
+///   `"dashed"`, `"dotted"`, `"double"`, `"triple"`, `"crossing"`, `"wave"`, `"zigzag"`, and `"coil"`.
 ///   For example, the following are equivalent:
 ///
 ///   ```typc
@@ -486,7 +486,7 @@
 ///   #stack(
 ///   	dir: ltr,
 ///   	spacing: 1fr,
-///   	..(0, 0.25, 0.5, 0.75, 1).map(p => fletcher.diagram(
+///   	..(0, 0.25, 0.5, 0.75, 1).map(p => diagram(
 ///   		cell-size: 1cm,
 ///   		edge((0,0), (1,0), p, "->", label-pos: p))
 ///   	),
@@ -601,16 +601,16 @@
 ///     shorthand strings are of the form $M_1 L M_2$ or $M_1 L M_2 L M_3$, etc,
 ///     where
 ///
-///     $ M_i in #`fletcher.MARKS` = #context math.mat(..fletcher.MARKS.get().keys().map(i => $#raw(lang: none, i),$).chunks(6), delim: "{") $
+///     $M_i$ is a mark name from `MARKS`
 ///     is a mark name and
-///     $ L in #`fletcher.LINE_ALIASES` = {#fletcher.LINE_ALIASES.keys().map(raw.with(lang: none)).join($,$)} $
+///     $L$ is a line style from `LINE_ALIASES`
 ///     is the line style.
 ///
 ///   - An array of mark names as strings or _mark objects_ (dictionaries of
 ///     parameters with a `draw` entry).
 ///
 ///   Shorthands are expanded into other arguments. For example,
-///   `edge(p1, p2, "=>")` is short for `edge(p1, p2, marks: (none, "head"), "double")`, or more precisely, the result of `edge(p1, p2, ..fletcher.interpret-marks-arg("=>"))`.
+///   `edge(p1, p2, "=>")` is short for `edge(p1, p2, marks: (none, "head"), "double")`, or more precisely, the result of `edge(p1, p2, ..interpret-marks-arg("=>"))`.
 ///
 ///   #table(
 ///   	columns: (1fr, 4fr),
@@ -630,7 +630,7 @@
 ///         ("X", (inherit: "head", size: 15, sharpness: 40deg),), ((inherit:
 ///         "circle", pos: 0.5, fill: auto),),
 ///   	).map(arg => (
-///   		fletcher.diagram(edge((0,0), (1,0), marks: arg, stroke: 0.8pt)),
+///   		diagram(edge((0,0), (1,0), marks: arg, stroke: 0.8pt)),
 ///   		raw(repr(arg)),
 ///   	)).join()
 ///   )
@@ -728,7 +728,7 @@
 ///
 ///   #for (i, r) in (none, 0pt, 5pt).enumerate() {
 ///   	if i > 0 { h(1fr) }
-///   	fletcher.diagram(
+///   	diagram(
 ///   		edge-stroke: 1pt,
 ///   		edge((3*i, 0), "r,t,rd,r", "=>", raw(repr(r)), label-pos: 0.6, corner-radius: r)
 ///   	)
