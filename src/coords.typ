@@ -88,14 +88,14 @@
 #let NAN_COORD = (float.nan, float.nan)
 
 
-#let resolve-system(coord) = {
+#let resolve-system(ctx, coord) = {
 	if type(coord) == dictionary and ("u", "v").all(k => k in coord) {
 		return "uv"
 	} else if type(coord) == label {
 		return "element"
 	}
 
-	let cetz-system = cetz.coordinate.resolve-system(coord)
+	let cetz-system = cetz.coordinate.resolve-system(ctx, coord)
 	if cetz-system == "xyz" and coord.len() == 2 {
 		if coord.all(x => type(x) == length) {
 			"xyz"
@@ -217,7 +217,7 @@
 
 	let result = ()
 	for c in coordinates.pos() {
-		let t = resolve-system(c)
+		let t = resolve-system(ctx, c)
 		let out = if t == "uv" {
 			if ctx.target-system in (auto, "uv") {
 				let (u, v) = c // also works for dictionaries
@@ -275,7 +275,9 @@
 
 
 #let default-ctx = (
+	version: cetz.version,
 	prev: (pt: (0, 0)),
+	background: none,
 
 	// cetz anchors assume y axis going up.
 	// see lines ending with the comment
@@ -291,6 +293,12 @@
 	em-size: (width: 11pt, height: 11pt),
 	style: cetz.styles.default,
 	groups: (),
+	marks: (
+		mnemonics: (:),
+		marks: (:),
+	),
+	resolve-coordinate: (),
+	shared-state: (:),
 	debug: false,
 )
 

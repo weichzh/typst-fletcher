@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/badge/version-0.5.9-green)
+![Version](https://img.shields.io/badge/version-0.5.10-green)
 [![Typst Universe](https://img.shields.io/badge/Typst-Universe-239dad)](https://typst.app/universe/package/fletcher/)
 [![Repo](https://img.shields.io/badge/GitHub-repo-444)](https://github.com/Jollywatt/typst-fletcher)
 [![Development version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fgithub.com%2FJollywatt%2Ftypst-fletcher%2Fraw%2Fmain%2Ftypst.toml&query=package.version&label=main&color=444)](https://github.com/Jollywatt/typst-fletcher/tree/main)
@@ -20,7 +20,7 @@ See the [manual](docs/manual.pdf?raw=true) for documentation or ask the communit
 
 
 ```typ
-#import "@preview/fletcher:0.5.9" as fletcher: diagram, node, edge
+#import "@preview/fletcher:0.5.10" as fletcher: diagram, node, edge
 ```
 
 
@@ -184,6 +184,13 @@ Pull requests are most welcome!
 
 
 ## Change log
+
+### 0.5.10
+
+- Update the development toolchain to `typst 0.14.2`, `cetz 0.4.2`, `tidy 0.4.3`, and `tytanic 0.3.3`.
+- Raise the package minimum Typst version to `0.13.1` to match `cetz 0.4.2`.
+- Fix compatibility with the newer CeTZ coordinate resolver and tidy's stricter example rendering.
+- Add `win-64` to the Pixi platforms for local Windows use.
 
 ### 0.5.9
 
